@@ -1,4 +1,4 @@
-<script>
+<script lang="jsx">
 import Tooltip from 'ant-design-vue/es/tooltip'
 import { cutStrByFullLength, getStrFullLength } from '@/components/_util/util'
 /*

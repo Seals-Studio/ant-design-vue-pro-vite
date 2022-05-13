@@ -1,14 +1,14 @@
-const ThemeColorReplacer = require('webpack-theme-color-replacer')
+//const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const generate = require('@ant-design/colors/lib/generate').default
 
 const getAntdSerials = (color) => {
   // 淡化（即less的tint）
-  const lightens = new Array(9).fill().map((t, i) => {
-    return ThemeColorReplacer.varyColor.lighten(color, i / 10)
-  })
-  const colorPalettes = generate(color)
-  const rgb = ThemeColorReplacer.varyColor.toNum3(color.replace('#', '')).join(',')
-  return lightens.concat(colorPalettes).concat(rgb)
+  //const lightens = new Array(9).fill().map((t, i) => {
+  //  return ThemeColorReplacer.varyColor.lighten(color, i / 10)
+  //})
+  //const colorPalettes = generate(color)
+  //const rgb = ThemeColorReplacer.varyColor.toNum3(color.replace('#', '')).join(',')
+  //return lightens.concat(colorPalettes).concat(rgb)
 }
 
 const themePluginOption = {
@@ -44,6 +44,6 @@ const themePluginOption = {
   }
 }
 
-const createThemeColorReplacerPlugin = () => new ThemeColorReplacer(themePluginOption)
-
-module.exports = createThemeColorReplacerPlugin
+//const createThemeColorReplacerPlugin = () => new ThemeColorReplacer(themePluginOption)
+//
+//module.exports = createThemeColorReplacerPlugin
