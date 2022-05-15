@@ -96,7 +96,7 @@ export default ({ mode }) => {
             resolveStyle: (name) => {
               return `ant-design-vue/es/${name}/style/index`
             },
-          }
+          },
         ],
       }),
     ],
@@ -105,9 +105,12 @@ export default ({ mode }) => {
       alias: [
         {
           find: '@',
-          replacement: path.resolve(__dirname, 'src')
-        }
-      ]
+          replacement: path.resolve(__dirname, 'src'),
+        },
+        {
+          'venn.js': path.resolve(__dirname, './node_modules/venn.js/build/venn.js'),
+        },
+      ],
     },
     css: {
       preprocessorOptions: {
