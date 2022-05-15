@@ -134,7 +134,7 @@
 <script>
 import { timeFix } from '@/utils/util'
 import { mapState } from 'vuex'
-import { PageHeaderWrapper } from '@ant-design-vue/pro-layout'
+import { PageHeaderWrapper } from 'pro-layout-vite'
 import { Radar } from '@/components'
 
 import { getRoleList, getServiceList } from '@/api/manage'
