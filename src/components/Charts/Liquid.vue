@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <v-chart
       :forceFit="true"
@@ -64,4 +64,8 @@ export default {
 
 <style scoped>
 
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

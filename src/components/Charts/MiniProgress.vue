@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="chart-mini-progress">
     <div class="target" :style="{ left: target + '%'}">
       <span :style="{ backgroundColor: color }" />
@@ -72,4 +72,8 @@ export default {
       }
     }
   }
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

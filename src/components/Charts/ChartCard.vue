@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <a-card :loading="loading" :body-style="{ padding: '20px 24px 8px' }" :bordered="false">
     <div class="chart-card-header">
       <div class="meta">
@@ -117,4 +117,8 @@ export default {
     line-height: 38px;
     height: 38px;
   }
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

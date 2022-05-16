@@ -1,5 +1,4 @@
 <template>
-
   <div id="userLayout" :class="['user-layout-wrapper', isMobile && 'mobile']">
     <div class="container">
       <div class="user-layout-lang">
@@ -9,7 +8,7 @@
         <div class="top">
           <div class="header">
             <a href="/">
-              <img src="~@/assets/logo.svg" class="logo" alt="logo">
+              <img :src="LogoImg" class="logo" alt="logo" />
               <span class="title">Ant Design</span>
             </a>
           </div>
@@ -26,9 +25,7 @@
             <a href="_self">隐私</a>
             <a href="_self">条款</a>
           </div>
-          <div class="copyright">
-            Copyright &copy; 2018 vueComponent
-          </div>
+          <div class="copyright">Copyright &copy; 2018 vueComponent</div>
         </div>
       </div>
     </div>
@@ -36,21 +33,27 @@
 </template>
 
 <script>
-import { deviceMixin } from '@/store/device-mixin'
-import SelectLang from '@/components/SelectLang'
+import { deviceMixin } from '/src/store/device-mixin'
+import SelectLang from '/src/components/SelectLang'
+import LogoImg from '/src/assets/logo.svg'
 
 export default {
   name: 'UserLayout',
   components: {
-    SelectLang
+    SelectLang,
   },
   mixins: [deviceMixin],
-  mounted () {
+  data() {
+    return {
+      LogoImg,
+    }
+  },
+  mounted() {
     document.body.classList.add('userLayout')
   },
-  beforeDestroy () {
+  beforeDestroy() {
     document.body.classList.remove('userLayout')
-  }
+  },
 }
 </script>
 
@@ -70,7 +73,7 @@ export default {
   .container {
     width: 100%;
     min-height: 100%;
-    background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
+    background: #f0f2f5 url(/src/assets/background.svg) no-repeat 50%;
     background-size: 100%;
     //padding: 50px 0 84px;
     position: relative;
@@ -122,7 +125,7 @@ export default {
 
           .title {
             font-size: 33px;
-            color: rgba(0, 0, 0, .85);
+            color: rgba(0, 0, 0, 0.85);
             font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
             font-weight: 600;
             position: relative;
@@ -172,7 +175,6 @@ export default {
     a {
       text-decoration: none;
     }
-
   }
 }
 </style>

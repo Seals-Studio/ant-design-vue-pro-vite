@@ -1,13 +1,21 @@
 <template>
   <div class="main user-layout-register">
-    <h3><span>{{ $t('user.register.register') }}</span></h3>
+    <h3>
+      <span>{{ $t('user.register.register') }}</span>
+    </h3>
     <a-form ref="formRegister" :form="form" id="formRegister">
       <a-form-item>
         <a-input
           size="large"
           type="text"
           :placeholder="$t('user.register.email.placeholder')"
-          v-decorator="['email', {rules: [{ required: true, type: 'email', message: $t('user.email.required') }], validateTrigger: ['change', 'blur']}]"
+          v-decorator="[
+            'email',
+            {
+              rules: [{ required: true, type: 'email', message: $t('user.email.required') }],
+              validateTrigger: ['change', 'blur'],
+            },
+          ]"
         ></a-input>
       </a-form-item>
 
@@ -15,14 +23,14 @@
         placement="rightTop"
         :trigger="['focus']"
         :getPopupContainer="(trigger) => trigger.parentElement"
-        v-model="state.passwordLevelChecked">
+        v-model="state.passwordLevelChecked"
+      >
         <template slot="content">
-          <div :style="{ width: '240px' }" >
+          <div :style="{ width: '240px' }">
             <div :class="['user-register', passwordLevelClass]">{{ $t(passwordLevelName) }}</div>
-            <a-progress :percent="state.percent" :showInfo="false" :strokeColor=" passwordLevelColor " />
-            <div style="margin-top: 10px;">
-              <span>{{ $t('user.register.password.popover-message') }}
-              </span>
+            <a-progress :percent="state.percent" :showInfo="false" :strokeColor="passwordLevelColor" />
+            <div style="margin-top: 10px">
+              <span>{{ $t('user.register.password.popover-message') }} </span>
             </div>
           </div>
         </template>
@@ -31,7 +39,16 @@
             size="large"
             @click="handlePasswordInputClick"
             :placeholder="$t('user.register.password.placeholder')"
-            v-decorator="['password', {rules: [{ required: true, message: $t('user.password.required') }, { validator: this.handlePasswordLevel }], validateTrigger: ['change', 'blur']}]"
+            v-decorator="[
+              'password',
+              {
+                rules: [
+                  { required: true, message: $t('user.password.required') },
+                  { validator: this.handlePasswordLevel },
+                ],
+                validateTrigger: ['change', 'blur'],
+              },
+            ]"
           ></a-input-password>
         </a-form-item>
       </a-popover>
@@ -40,12 +57,34 @@
         <a-input-password
           size="large"
           :placeholder="$t('user.register.confirm-password.placeholder')"
-          v-decorator="['password2', {rules: [{ required: true, message: $t('user.password.required') }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
+          v-decorator="[
+            'password2',
+            {
+              rules: [
+                { required: true, message: $t('user.password.required') },
+                { validator: this.handlePasswordCheck },
+              ],
+              validateTrigger: ['change', 'blur'],
+            },
+          ]"
         ></a-input-password>
       </a-form-item>
 
       <a-form-item>
-        <a-input size="large" :placeholder="$t('user.login.mobile.placeholder')" v-decorator="['mobile', {rules: [{ required: true, message: $t('user.phone-number.required'), pattern: /^1[3456789]\d{9}$/ }, { validator: this.handlePhoneCheck } ], validateTrigger: ['change', 'blur'] }]">
+        <a-input
+          size="large"
+          :placeholder="$t('user.login.mobile.placeholder')"
+          v-decorator="[
+            'mobile',
+            {
+              rules: [
+                { required: true, message: $t('user.phone-number.required'), pattern: /^1[3456789]\d{9}$/ },
+                { validator: this.handlePhoneCheck },
+              ],
+              validateTrigger: ['change', 'blur'],
+            },
+          ]"
+        >
           <a-select slot="addonBefore" size="large" defaultValue="+86">
             <a-select-option value="+86">+86</a-select-option>
             <a-select-option value="+87">+87</a-select-option>
@@ -63,8 +102,16 @@
       <a-row :gutter="16">
         <a-col class="gutter-row" :span="16">
           <a-form-item>
-            <a-input size="large" type="text" :placeholder="$t('user.login.mobile.verification-code.placeholder')" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-              <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+            <a-input
+              size="large"
+              type="text"
+              :placeholder="$t('user.login.mobile.verification-code.placeholder')"
+              v-decorator="[
+                'captcha',
+                { rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur' },
+              ]"
+            >
+              <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
         </a-col>
@@ -74,7 +121,8 @@
             size="large"
             :disabled="state.smsSendBtn"
             @click.stop.prevent="getCaptcha"
-            v-text="!state.smsSendBtn && $t('user.register.get-verification-code')||(state.time+' s')"></a-button>
+            v-text="(!state.smsSendBtn && $t('user.register.get-verification-code')) || state.time + ' s'"
+          ></a-button>
         </a-col>
       </a-row>
 
@@ -86,44 +134,43 @@
           class="register-button"
           :loading="registerBtn"
           @click.stop.prevent="handleSubmit"
-          :disabled="registerBtn">{{ $t('user.register.register') }}
+          :disabled="registerBtn"
+          >{{ $t('user.register.register') }}
         </a-button>
         <router-link class="login" :to="{ name: 'login' }">{{ $t('user.register.sign-in') }}</router-link>
       </a-form-item>
-
     </a-form>
   </div>
 </template>
 
 <script>
-import { getSmsCaptcha } from '@/api/login'
-import { deviceMixin } from '@/store/device-mixin'
-import { scorePassword } from '@/utils/util'
+import { getSmsCaptcha } from '/src/api/login'
+import { deviceMixin } from '/src/store/device-mixin'
+import { scorePassword } from '/src/utils/util'
 
 const levelNames = {
   0: 'user.password.strength.short',
   1: 'user.password.strength.low',
   2: 'user.password.strength.medium',
-  3: 'user.password.strength.strong'
+  3: 'user.password.strength.strong',
 }
 const levelClass = {
   0: 'error',
   1: 'error',
   2: 'warning',
-  3: 'success'
+  3: 'success',
 }
 const levelColor = {
   0: '#ff0000',
   1: '#ff0000',
   2: '#ff7e05',
-  3: '#52c41a'
+  3: '#52c41a',
 }
 export default {
   name: 'Register',
-  components: {
-  },
+  components: {},
   mixins: [deviceMixin],
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this),
 
@@ -134,26 +181,26 @@ export default {
         passwordLevel: 0,
         passwordLevelChecked: false,
         percent: 10,
-        progressColor: '#FF0000'
+        progressColor: '#FF0000',
       },
-      registerBtn: false
+      registerBtn: false,
     }
   },
   computed: {
-    passwordLevelClass () {
+    passwordLevelClass() {
       return levelClass[this.state.passwordLevel]
     },
-    passwordLevelName () {
+    passwordLevelName() {
       return levelNames[this.state.passwordLevel]
     },
-    passwordLevelColor () {
+    passwordLevelColor() {
       return levelColor[this.state.passwordLevel]
-    }
+    },
   },
   methods: {
-    handlePasswordLevel (rule, value, callback) {
+    handlePasswordLevel(rule, value, callback) {
       if (value === '') {
-       return callback()
+        return callback()
       }
       console.log('scorePassword ; ', scorePassword(value))
       if (value.length >= 6) {
@@ -161,10 +208,10 @@ export default {
           this.state.level = 1
         }
         if (scorePassword(value) >= 60) {
-        this.state.level = 2
+          this.state.level = 2
         }
         if (scorePassword(value) >= 80) {
-        this.state.level = 3
+          this.state.level = 3
         }
       } else {
         this.state.level = 0
@@ -176,7 +223,7 @@ export default {
       callback()
     },
 
-    handlePasswordCheck (rule, value, callback) {
+    handlePasswordCheck(rule, value, callback) {
       const password = this.form.getFieldValue('password')
       // console.log('value', value)
       if (value === undefined) {
@@ -188,7 +235,7 @@ export default {
       callback()
     },
 
-    handlePhoneCheck (rule, value, callback) {
+    handlePhoneCheck(rule, value, callback) {
       console.log('handlePhoneCheck, rule:', rule)
       console.log('handlePhoneCheck, value', value)
       console.log('handlePhoneCheck, callback', callback)
@@ -196,7 +243,7 @@ export default {
       callback()
     },
 
-    handlePasswordInputClick () {
+    handlePasswordInputClick() {
       if (!this.isMobile) {
         this.state.passwordLevelChecked = true
         return
@@ -204,8 +251,12 @@ export default {
       this.state.passwordLevelChecked = false
     },
 
-    handleSubmit () {
-      const { form: { validateFields }, state, $router } = this
+    handleSubmit() {
+      const {
+        form: { validateFields },
+        state,
+        $router,
+      } = this
       validateFields({ force: true }, (err, values) => {
         if (!err) {
           state.passwordLevelChecked = false
@@ -214,103 +265,105 @@ export default {
       })
     },
 
-    getCaptcha (e) {
+    getCaptcha(e) {
       e.preventDefault()
-      const { form: { validateFields }, state, $message, $notification } = this
+      const {
+        form: { validateFields },
+        state,
+        $message,
+        $notification,
+      } = this
 
-      validateFields(['mobile'], { force: true },
-        (err, values) => {
-          if (!err) {
-            state.smsSendBtn = true
+      validateFields(['mobile'], { force: true }, (err, values) => {
+        if (!err) {
+          state.smsSendBtn = true
 
-            const interval = window.setInterval(() => {
-              if (state.time-- <= 0) {
-                state.time = 60
-                state.smsSendBtn = false
-                window.clearInterval(interval)
-              }
-            }, 1000)
+          const interval = window.setInterval(() => {
+            if (state.time-- <= 0) {
+              state.time = 60
+              state.smsSendBtn = false
+              window.clearInterval(interval)
+            }
+          }, 1000)
 
-            const hide = $message.loading('验证码发送中..', 0)
+          const hide = $message.loading('验证码发送中..', 0)
 
-            getSmsCaptcha({ mobile: values.mobile }).then(res => {
+          getSmsCaptcha({ mobile: values.mobile })
+            .then((res) => {
               setTimeout(hide, 2500)
               $notification['success']({
                 message: '提示',
                 description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-                duration: 8
+                duration: 8,
               })
-            }).catch(err => {
+            })
+            .catch((err) => {
               setTimeout(hide, 1)
               clearInterval(interval)
               state.time = 60
               state.smsSendBtn = false
               this.requestFailed(err)
             })
-          }
         }
-      )
+      })
     },
-    requestFailed (err) {
+    requestFailed(err) {
       this.$notification['error']({
         message: '错误',
         description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4
+        duration: 4,
       })
       this.registerBtn = false
-    }
+    },
   },
   watch: {
-    'state.passwordLevel' (val) {
+    'state.passwordLevel'(val) {
       console.log(val)
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less">
-  .user-register {
-
-    &.error {
-      color: #ff0000;
-    }
-
-    &.warning {
-      color: #ff7e05;
-    }
-
-    &.success {
-      color: #52c41a;
-    }
-
+.user-register {
+  &.error {
+    color: #ff0000;
   }
 
-  .user-layout-register {
-    .ant-input-group-addon:first-child {
-      background-color: #fff;
-    }
+  &.warning {
+    color: #ff7e05;
   }
+
+  &.success {
+    color: #52c41a;
+  }
+}
+
+.user-layout-register {
+  .ant-input-group-addon:first-child {
+    background-color: #fff;
+  }
+}
 </style>
 <style lang="less" scoped>
-  .user-layout-register {
-
-    & > h3 {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
-    .getCaptcha {
-      display: block;
-      width: 100%;
-      height: 40px;
-    }
-
-    .register-button {
-      width: 50%;
-    }
-
-    .login {
-      float: right;
-      line-height: 40px;
-    }
+.user-layout-register {
+  & > h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
   }
+
+  .getCaptcha {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
+
+  .register-button {
+    width: 50%;
+  }
+
+  .login {
+    float: right;
+    line-height: 40px;
+  }
+}
 </style>

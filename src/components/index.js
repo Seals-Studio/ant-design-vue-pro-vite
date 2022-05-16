@@ -1,31 +1,31 @@
 // chart
-import Bar from '@/components/Charts/Bar'
-import ChartCard from '@/components/Charts/ChartCard'
-import Liquid from '@/components/Charts/Liquid'
-import MiniArea from '@/components/Charts/MiniArea'
-import MiniSmoothArea from '@/components/Charts/MiniSmoothArea'
-import MiniBar from '@/components/Charts/MiniBar'
-import MiniProgress from '@/components/Charts/MiniProgress'
-import Radar from '@/components/Charts/Radar'
-import RankList from '@/components/Charts/RankList'
-import TransferBar from '@/components/Charts/TransferBar'
-import TagCloud from '@/components/Charts/TagCloud'
+import Bar from '/src/components/Charts/Bar'
+import ChartCard from '/src/components/Charts/ChartCard'
+import Liquid from '/src/components/Charts/Liquid'
+import MiniArea from '/src/components/Charts/MiniArea'
+import MiniSmoothArea from '/src/components/Charts/MiniSmoothArea'
+import MiniBar from '/src/components/Charts/MiniBar'
+import MiniProgress from '/src/components/Charts/MiniProgress'
+import Radar from '/src/components/Charts/Radar'
+import RankList from '/src/components/Charts/RankList'
+import TransferBar from '/src/components/Charts/TransferBar'
+import TagCloud from '/src/components/Charts/TagCloud'
 
 // pro components
-import AvatarList from '@/components/AvatarList'
-import Ellipsis from '@/components/Ellipsis'
-import FooterToolbar from '@/components/FooterToolbar'
-import NumberInfo from '@/components/NumberInfo'
-import Tree from '@/components/Tree/Tree'
-import Trend from '@/components/Trend'
-import STable from '@/components/Table/index.jsx'
-import MultiTab from '@/components/MultiTab'
-import IconSelector from '@/components/IconSelector'
-import TagSelect from '@/components/TagSelect'
-import StandardFormRow from '@/components/StandardFormRow'
-import ArticleListContent from '@/components/ArticleListContent'
+import AvatarList from '/src/components/AvatarList'
+import Ellipsis from '/src/components/Ellipsis'
+import FooterToolbar from '/src/components/FooterToolbar'
+import NumberInfo from '/src/components/NumberInfo'
+import Tree from '/src/components/Tree/Tree'
+import Trend from '/src/components/Trend'
+import STable from '/src/components/Table/index.jsx'
+import MultiTab from '/src/components/MultiTab'
+import IconSelector from '/src/components/IconSelector'
+import TagSelect from '/src/components/TagSelect'
+import StandardFormRow from '/src/components/StandardFormRow'
+import ArticleListContent from '/src/components/ArticleListContent'
 
-import Dialog from '@/components/Dialog'
+import Dialog from '/src/components/Dialog'
 
 export {
   AvatarList,
@@ -51,6 +51,5 @@ export {
   TagSelect,
   StandardFormRow,
   ArticleListContent,
-
-  Dialog
+  Dialog,
 }

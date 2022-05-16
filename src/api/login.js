@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '/src/utils/request'
 
 const userApi = {
   Login: '/auth/login',
@@ -10,7 +10,7 @@ const userApi = {
   SendSmsErr: '/account/sms_err',
   // get my info
   UserInfo: '/user/info',
-  UserMenu: '/user/nav'
+  UserMenu: '/user/nav',
 }
 
 /**
@@ -24,46 +24,46 @@ const userApi = {
  * @param parameter
  * @returns {*}
  */
-export function login (parameter) {
+export function login(parameter) {
   return request({
     url: userApi.Login,
     method: 'post',
-    data: parameter
+    data: parameter,
   })
 }
 
-export function getSmsCaptcha (parameter) {
+export function getSmsCaptcha(parameter) {
   return request({
     url: userApi.SendSms,
     method: 'post',
-    data: parameter
+    data: parameter,
   })
 }
 
-export function getInfo () {
+export function getInfo() {
   return request({
     url: userApi.UserInfo,
     method: 'get',
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
   })
 }
 
-export function getCurrentUserNav () {
+export function getCurrentUserNav() {
   return request({
     url: userApi.UserMenu,
-    method: 'get'
+    method: 'get',
   })
 }
 
-export function logout () {
+export function logout() {
   return request({
     url: userApi.Logout,
     method: 'post',
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
   })
 }
 
@@ -71,10 +71,10 @@ export function logout () {
  * get user 2step code open?
  * @param parameter {*}
  */
-export function get2step (parameter) {
+export function get2step(parameter) {
   return request({
     url: userApi.twoStepCode,
     method: 'post',
-    data: parameter
+    data: parameter,
   })
 }

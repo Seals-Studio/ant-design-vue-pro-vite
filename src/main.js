@@ -8,7 +8,7 @@ import router from './router'
 import store from './store/'
 import i18n from './locales'
 import { VueAxios } from './utils/request'
-import ProLayout, { PageHeaderWrapper } from 'pro-layout-vite'
+import ProLayout, { PageHeaderWrapper } from '/src/components/ProLayout/index.js'
 import themePluginConfig from '../config/themePluginConfig'
 
 // mock

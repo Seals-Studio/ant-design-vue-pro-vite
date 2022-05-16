@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-chart :forceFit="true" height="400" :data="data" :padding="[20, 20, 95, 20]" :scale="scale">
     <v-tooltip></v-tooltip>
     <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
@@ -65,4 +65,8 @@ export default {
 
 <style scoped>
 
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

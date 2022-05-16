@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :style="{ padding: '0 0 32px 32px' }">
     <h4 :style="{ marginBottom: '20px' }">{{ title }}</h4>
     <v-chart
@@ -61,4 +61,8 @@ export default {
     }
   }
 }
-</script>
+</script> -->
+
+<template>
+  <div></div>
+</template>

@@ -1,12 +1,12 @@
-<template>
+<!-- <template>
   <v-chart :width="width" :height="height" :padding="[0]" :data="data" :scale="scale">
     <v-tooltip :show-title="false" />
     <v-coord type="rect" direction="TL" />
     <v-point position="x*y" color="category" shape="cloud" tooltip="value*category" />
   </v-chart>
-</template>
+</template> -->
 
-<script>
+<!-- <script>
 import { registerShape } from 'viser-vue'
 const DataSet = require('@antv/data-set')
 
@@ -110,4 +110,8 @@ export default {
     }
   }
 }
-</script>
+</script> -->
+
+<template>
+  <div></div>
+</template>

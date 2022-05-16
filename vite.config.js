@@ -35,6 +35,19 @@ const AntdMomentResolver = (reg = /ant-design-vue[\/|\\][\w-\\\/]*\.js$/) => {
               if (source.indexOf('import * as moment from')) {
                 source = source.replace(/import\s\*\sas\smoment\sfrom/g, 'import moment from')
               }
+              // 替换List组件代码，List.Item为undefined
+              if (source.indexOf('Vue.component(List.Item.name, List.Item);')) {
+                source = source.replace(
+                  'Vue.component(List.Item.name, List.Item);',
+                  'Vue.component("AListItem", Item);'
+                )
+              }
+              if (source.indexOf('Vue.component(List.Item.Meta.name, List.Item.Meta);')) {
+                source = source.replace(
+                  'Vue.component(List.Item.Meta.name, List.Item.Meta);',
+                  'Vue.component("AListItemMeta", Item.Meta);'
+                )
+              }
               return {
                 contents: source,
               }
@@ -79,10 +92,10 @@ export default ({ mode }) => {
             cdn: {
               css: [],
               js: [
-                '//cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js',
-                '//cdn.jsdelivr.net/npm/vue-router@3.5.1/dist/vue-router.min.js',
-                '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
-                '//cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js',
+                // '//cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js',
+                // '//cdn.jsdelivr.net/npm/vue-router@3.5.1/dist/vue-router.min.js',
+                // '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
+                // '//cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js',
               ],
             },
           },
@@ -103,13 +116,13 @@ export default ({ mode }) => {
     resolve: {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
       alias: [
-        {
-          find: '@',
-          replacement: path.resolve(__dirname, 'src'),
-        },
-        {
-          'venn.js': path.resolve(__dirname, './node_modules/venn.js/build/venn.js'),
-        },
+        //{
+        //  find: '@',
+        //  replacement: path.resolve(__dirname, 'src'),
+        //},
+        // {
+        //   'venn.js': 'venn.js/build/venn.js',
+        // },
       ],
     },
     css: {
@@ -139,7 +152,7 @@ export default ({ mode }) => {
             'ant-global-sider-zindex': 106,
             'ant-global-header-zindex': 105,
             'primary-color': '#348ee4',
-            hack: `true; @import (reference) "${path.resolve('src/assets/style/global.less')}";`,
+            // hack: `true; @import (reference) "${path.resolve('src/assets/style/global.less')}";`,
           },
         },
         styl: {

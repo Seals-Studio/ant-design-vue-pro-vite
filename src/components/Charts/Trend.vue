@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="chart-trend">
     {{ term }}
     <span>{{ rate }}%</span>
@@ -79,4 +79,8 @@ export default {
       }
     }
   }
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

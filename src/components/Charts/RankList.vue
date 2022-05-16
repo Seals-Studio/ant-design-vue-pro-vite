@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="rank">
     <h4 class="title">{{ title }}</h4>
     <ul class="list">
@@ -74,4 +74,8 @@ export default {
     padding: 0 32px 32px 32px;
   }
 
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>

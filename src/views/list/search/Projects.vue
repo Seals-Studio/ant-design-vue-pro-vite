@@ -2,7 +2,7 @@
   <div>
     <a-card :bordered="false" class="ant-pro-components-tag-select">
       <a-form :form="form" layout="inline">
-        <standard-form-row title="所属类目" block style="padding-bottom: 11px;">
+        <standard-form-row title="所属类目" block style="padding-bottom: 11px">
           <a-form-item>
             <tag-select>
               <tag-select-option value="Category1">类目一</tag-select-option>
@@ -24,7 +24,7 @@
             <a-col :lg="8" :md="10" :sm="10" :xs="24">
               <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="作者">
                 <a-select
-                  style="max-width: 200px; width: 100%;"
+                  style="max-width: 200px; width: 100%"
                   mode="multiple"
                   placeholder="不限"
                   v-decorator="['author']"
@@ -36,11 +36,7 @@
             </a-col>
             <a-col :lg="8" :md="10" :sm="10" :xs="24">
               <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="好评度">
-                <a-select
-                  style="max-width: 200px; width: 100%;"
-                  placeholder="不限"
-                  v-decorator="['rate']"
-                >
+                <a-select style="max-width: 200px; width: 100%" placeholder="不限" v-decorator="['rate']">
                   <a-select-option value="good">优秀</a-select-option>
                   <a-select-option value="normal">普通</a-select-option>
                 </a-select>
@@ -83,7 +79,7 @@
 
 <script>
 import moment from 'moment'
-import { TagSelect, StandardFormRow, Ellipsis, AvatarList } from '@/components'
+import { TagSelect, StandardFormRow, Ellipsis, AvatarList } from '/src/components'
 const TagSelectOption = TagSelect.Option
 const AvatarListItem = AvatarList.Item
 
@@ -94,35 +90,35 @@ export default {
     Ellipsis,
     TagSelect,
     TagSelectOption,
-    StandardFormRow
+    StandardFormRow,
   },
-  data () {
+  data() {
     return {
       data: [],
       form: this.$form.createForm(this),
-      loading: true
+      loading: true,
     }
   },
   filters: {
-    fromNow (date) {
+    fromNow(date) {
       return moment(date).fromNow()
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.getList()
   },
   methods: {
-    handleChange (value) {
+    handleChange(value) {
       console.log(`selected ${value}`)
     },
-    getList () {
-      this.$http.get('/list/article', { params: { count: 8 } }).then(res => {
+    getList() {
+      this.$http.get('/list/article', { params: { count: 8 } }).then((res) => {
         console.log('res', res)
         this.data = res.result
         this.loading = false
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -156,7 +152,7 @@ export default {
 
     > span {
       flex: 1 1;
-      color: rgba(0,0,0,.45);
+      color: rgba(0, 0, 0, 0.45);
       font-size: 12px;
     }
 

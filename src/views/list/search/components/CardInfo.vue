@@ -17,22 +17,21 @@ export default {
   props: {
     activeUser: {
       type: [String, Number],
-      default: 0
+      default: 0,
     },
     newUser: {
       type: [String, Number],
-      default: 0
-    }
-  }
+      default: 0,
+    },
+  },
 }
 </script>
 
 <style lang="less" scoped>
-@import "~@/components/index.less";
-@import "~@/utils/utils.less";
+@import '/src/components/index.less';
+@import '/src/utils/utils.less';
 
 .cardInfo {
-
   .clearfix();
 
   margin-top: 16px;

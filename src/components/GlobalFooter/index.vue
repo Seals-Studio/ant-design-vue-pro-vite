@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import { GlobalFooter } from 'pro-layout-vite'
+import { GlobalFooter } from '/src/components/ProLayout/index.js'
 
 export default {
   name: 'ProGlobalFooter',
   components: {
-    GlobalFooter
-  }
+    GlobalFooter,
+  },
 }
 </script>

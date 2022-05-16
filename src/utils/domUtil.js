@@ -1,4 +1,4 @@
-import config from '@/config/defaultSettings'
+import config from '/src/config/defaultSettings'
 
 export const setDocumentTitle = function (title) {
   document.title = title

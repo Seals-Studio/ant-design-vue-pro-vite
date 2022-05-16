@@ -1,41 +1,41 @@
 import './index.less'
 
 import { Icon, Menu, Dropdown } from 'ant-design-vue'
-import { i18nRender } from '@/locales'
-import i18nMixin from '@/store/i18n-mixin'
+import { i18nRender } from '/src/locales'
+import i18nMixin from '/src/store/i18n-mixin'
 
 const locales = ['zh-CN', 'zh-TW', 'en-US', 'pt-BR']
 const languageLabels = {
   'zh-CN': '简体中文',
   'zh-TW': '繁体中文',
   'en-US': 'English',
-  'pt-BR': 'Português'
+  'pt-BR': 'Português',
 }
 // eslint-disable-next-line
 const languageIcons = {
   'zh-CN': '🇨🇳',
   'zh-TW': '🇭🇰',
   'en-US': '🇺🇸',
-  'pt-BR': '🇧🇷'
+  'pt-BR': '🇧🇷',
 }
 
 const SelectLang = {
   props: {
     prefixCls: {
       type: String,
-      default: 'ant-pro-drop-down'
-    }
+      default: 'ant-pro-drop-down',
+    },
   },
   name: 'SelectLang',
   mixins: [i18nMixin],
-  render () {
+  render() {
     const { prefixCls } = this
     const changeLang = ({ key }) => {
       this.setLang(key)
     }
     const langMenu = (
       <Menu class={['menu', 'ant-pro-header-menu']} selectedKeys={[this.currentLang]} onClick={changeLang}>
-        {locales.map(locale => (
+        {locales.map((locale) => (
           <Menu.Item key={locale}>
             <span role="img" aria-label={languageLabels[locale]}>
               {languageIcons[locale]}
@@ -52,7 +52,7 @@ const SelectLang = {
         </span>
       </Dropdown>
     )
-  }
+  },
 }
 
 export default SelectLang

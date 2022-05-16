@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="prefixCls">
     <div class="chart-wrapper" :style="{ height: 46 }">
       <v-chart :force-fit="true" :height="100" :data="dataSource" :scale="scale" :padding="[36, 0, 18, 0]">
@@ -37,4 +37,8 @@ export default {
 
 <style lang="less" scoped>
   @import "smooth.area.less";
-</style>
+</style> -->
+
+<template>
+  <div></div>
+</template>
