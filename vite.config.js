@@ -117,6 +117,12 @@ export default ({ mode }) => {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
       alias: [
         //{
+        //  find: /@\/.+/,
+        //  replacement: (val) => {
+        //    return val.replace(/^@/, path.resolve(__dirname, './src/'))
+        //  },
+        //},
+        //{
         //  find: '@',
         //  replacement: path.resolve(__dirname, 'src'),
         //},
