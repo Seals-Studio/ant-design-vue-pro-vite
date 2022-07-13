@@ -78,13 +78,13 @@ export default {
 @import '/src/components/index.less';
 
 .card-list {
-  /deep/ .ant-card-body:hover {
+  ::v-deep .ant-card-body:hover {
     .ant-card-meta-title > a {
       color: @primary-color;
     }
   }
 
-  /deep/ .ant-card-meta-title {
+  ::v-deep .ant-card-meta-title {
     margin-bottom: 12px;
 
     & > a {
@@ -94,7 +94,7 @@ export default {
     }
   }
 
-  /deep/ .meta-content {
+  ::v-deep .meta-content {
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;

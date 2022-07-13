@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import DataSet from '@antv/data-set'
+// import DataSet from '@antv/data-set'
 import { timeFix } from '/src/utils/util'
 import { mapState } from 'vuex'
 import { PageHeaderWrapper } from '/src/components/ProLayout/index.js'
@@ -247,15 +247,16 @@ export default {
       this.radarLoading = true
 
       this.$http.get('/workplace/radar').then((res) => {
-        const dv = new DataSet.View().source(res.result)
-        dv.transform({
-          type: 'fold',
-          fields: ['个人', '团队', '部门'],
-          key: 'user',
-          value: 'score',
-        })
+        // const dv = new DataSet.View().source(res.result)
+        // dv.transform({
+        //   type: 'fold',
+        //   fields: ['个人', '团队', '部门'],
+        //   key: 'user',
+        //   value: 'score',
+        // })
 
-        this.radarData = dv.rows
+        // this.radarData = dv.rows
+        this.radarData = res.result
         this.radarLoading = false
       })
     },

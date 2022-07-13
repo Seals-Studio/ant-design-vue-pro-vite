@@ -222,7 +222,7 @@
 
 <script>
 import moment from 'moment'
-import DataSet from '@antv/data-set'
+// import DataSet from '@antv/data-set'
 import {
   ChartCard,
   MiniArea,
@@ -305,14 +305,15 @@ const pieScale = [
   },
 ]
 
-const dv = new DataSet.View().source(sourceData)
-dv.transform({
-  type: 'percent',
-  field: 'count',
-  dimension: 'item',
-  as: 'percent',
-})
-const pieData = dv.rows
+// const dv = new DataSet.View().source(sourceData)
+// dv.transform({
+//   type: 'percent',
+//   field: 'count',
+//   dimension: 'item',
+//   as: 'percent',
+// })
+// const pieData = dv.rows
+const pieData = sourceData
 
 export default {
   name: 'Analysis',
@@ -409,7 +410,7 @@ export default {
 
 .antd-pro-pages-dashboard-analysis-salesCard {
   height: calc(100% - 24px);
-  /deep/ .ant-card-head {
+  ::v-deep .ant-card-head {
     position: relative;
   }
 }

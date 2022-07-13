@@ -7,9 +7,9 @@
       @blur="onEditorBlur($event)"
       @focus="onEditorFocus($event)"
       @ready="onEditorReady($event)"
-      @change="onEditorChange($event)">
+      @change="onEditorChange($event)"
+    >
     </quill-editor>
-
   </div>
 </template>
 
@@ -23,47 +23,47 @@ import { quillEditor } from 'vue-quill-editor'
 export default {
   name: 'QuillEditor',
   components: {
-    quillEditor
+    quillEditor,
   },
   props: {
     prefixCls: {
       type: String,
-      default: 'ant-editor-quill'
+      default: 'ant-editor-quill',
     },
     // 表单校验用字段
     // eslint-disable-next-line
     value: {
-      type: String
-    }
+      type: String,
+    },
   },
-  data () {
+  data() {
     return {
       content: null,
       editorOption: {
         // some quill options
-      }
+      },
     }
   },
   methods: {
-    onEditorBlur (quill) {
+    onEditorBlur(quill) {
       console.log('editor blur!', quill)
     },
-    onEditorFocus (quill) {
+    onEditorFocus(quill) {
       console.log('editor focus!', quill)
     },
-    onEditorReady (quill) {
+    onEditorReady(quill) {
       console.log('editor ready!', quill)
     },
-    onEditorChange ({ quill, html, text }) {
+    onEditorChange({ quill, html, text }) {
       console.log('editor change!', quill, html, text)
       this.$emit('change', html)
-    }
+    },
   },
   watch: {
-    value (val) {
+    value(val) {
       this.content = val
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -73,10 +73,10 @@ export default {
 /* 覆盖 quill 默认边框圆角为 ant 默认圆角，用于统一 ant 组件风格 */
 .ant-editor-quill {
   line-height: initial;
-  /deep/ .ql-toolbar.ql-snow {
+  ::v-deep .ql-toolbar.ql-snow {
     border-radius: @border-radius-base @border-radius-base 0 0;
   }
-  /deep/ .ql-container.ql-snow {
+  ::v-deep .ql-container.ql-snow {
     border-radius: 0 0 @border-radius-base @border-radius-base;
   }
 }

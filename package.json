@@ -8,7 +8,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@antv/data-set": "^0.10.2",
     "ant-design-vue": "^1.7.8",
     "axios": "^0.26.1",
     "core-js": "^3.21.1",
@@ -19,7 +18,7 @@
     "lodash.pick": "^4.4.0",
     "md5": "^2.3.0",
     "mockjs2": "1.0.8",
-    "moment": "^2.29.2",
+    "moment": "^2.29.3",
     "nprogress": "^0.2.0",
     "omit.js": "^2.0.2",
     "store": "^2.0.12",
